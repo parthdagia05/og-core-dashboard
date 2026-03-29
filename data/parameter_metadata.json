@@ -1,0 +1,318 @@
+{
+  "demographics": {
+    "label": "Demographics",
+    "params": {
+      "S": {
+        "label": "Periods of Economic Life",
+        "description": "Number of model periods an agent lives. With annual periods, S=80 means agents live 80 years of economic life.",
+        "type": "integer",
+        "min": 10,
+        "max": 100,
+        "step": 1
+      },
+      "starting_age": {
+        "label": "Starting Age",
+        "description": "Age at which agents enter the model economy and begin making economic decisions.",
+        "type": "integer",
+        "min": 16,
+        "max": 30,
+        "step": 1
+      },
+      "ending_age": {
+        "label": "Ending Age",
+        "description": "Maximum age of agents in the model. Must equal starting_age + S.",
+        "type": "integer",
+        "min": 60,
+        "max": 120,
+        "step": 1
+      },
+      "lambdas": {
+        "label": "Ability Type Fractions",
+        "description": "Population fraction by ability type (J types). Values must sum to 1.0. E.g., [0.6, 0.3, 0.1] means 60% low, 30% mid, 10% high ability.",
+        "type": "array",
+        "item_type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      }
+    }
+  },
+  "preferences": {
+    "label": "Preferences",
+    "params": {
+      "beta_annual": {
+        "label": "Annual Discount Factor",
+        "description": "Annual time preference discount factor. 0.96 means agents discount future utility by 4% per year. Lower values = more impatient.",
+        "type": "float",
+        "min": 0.8,
+        "max": 1.0,
+        "step": 0.01
+      },
+      "sigma": {
+        "label": "Risk Aversion",
+        "description": "Coefficient of relative risk aversion (CRRA). Higher values mean agents are more risk-averse and prefer smoother consumption.",
+        "type": "float",
+        "min": 0.1,
+        "max": 5.0,
+        "step": 0.1
+      },
+      "frisch": {
+        "label": "Frisch Elasticity",
+        "description": "Frisch elasticity of labor supply. Higher values mean labor supply is more responsive to wage changes.",
+        "type": "float",
+        "min": 0.1,
+        "max": 2.0,
+        "step": 0.1
+      },
+      "ltilde": {
+        "label": "Time Endowment",
+        "description": "Total time endowment per period, normalized to 1.0. Agents allocate this between labor and leisure.",
+        "type": "float",
+        "min": 0.5,
+        "max": 2.0,
+        "step": 0.1
+      }
+    }
+  },
+  "firms": {
+    "label": "Firms",
+    "params": {
+      "gamma": {
+        "label": "Capital Share",
+        "description": "Capital share of output in the Cobb-Douglas production function. 0.40 means 40% of output goes to capital owners.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "gamma_g": {
+        "label": "Public Capital Share",
+        "description": "Share of output attributable to public (government) capital. 0 means no public capital in production.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "delta_annual": {
+        "label": "Depreciation Rate",
+        "description": "Annual rate at which physical capital depreciates. 0.05 = 5% depreciation per year.",
+        "type": "float",
+        "min": 0,
+        "max": 0.3,
+        "step": 0.01
+      },
+      "epsilon": {
+        "label": "Elasticity of Substitution",
+        "description": "Elasticity of substitution between capital and labor. 1.0 = Cobb-Douglas (unit elasticity).",
+        "type": "float",
+        "min": 0.1,
+        "max": 3.0,
+        "step": 0.1
+      },
+      "Z": {
+        "label": "Total Factor Productivity",
+        "description": "Total factor productivity (TFP) level. Higher Z means the economy produces more output from the same inputs.",
+        "type": "float",
+        "min": 0.1,
+        "max": 5.0,
+        "step": 0.1
+      }
+    }
+  },
+  "government": {
+    "label": "Government",
+    "params": {
+      "alpha_G": {
+        "label": "Gov Spending / GDP",
+        "description": "Share of GDP the government spends on goods and services. 0.15 = 15% of GDP.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "alpha_T": {
+        "label": "Transfers / GDP",
+        "description": "Share of GDP distributed as government transfers to households. 0.12 = 12% of GDP.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "alpha_I": {
+        "label": "Infrastructure Investment / GDP",
+        "description": "Share of GDP spent on public infrastructure investment. 0.02 = 2% of GDP.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "tG1": {
+        "label": "Gov Spending Adjust Start",
+        "description": "Year at which government spending begins adjusting toward its target level.",
+        "type": "integer",
+        "min": 1,
+        "max": 100,
+        "step": 1
+      },
+      "tG2": {
+        "label": "Gov Spending Adjust End",
+        "description": "Year by which government spending reaches its target level.",
+        "type": "integer",
+        "min": 50,
+        "max": 500,
+        "step": 1
+      },
+      "debt_ratio_ss": {
+        "label": "Steady-State Debt/GDP",
+        "description": "Target debt-to-GDP ratio in the long-run steady state. 1.20 = debt is 120% of GDP.",
+        "type": "float",
+        "min": 0,
+        "max": 5,
+        "step": 0.01
+      },
+      "initial_debt_ratio": {
+        "label": "Initial Debt/GDP",
+        "description": "Initial debt-to-GDP ratio at the start of the simulation. 0.59 = debt is 59% of GDP.",
+        "type": "float",
+        "min": 0,
+        "max": 5,
+        "step": 0.01
+      }
+    }
+  },
+  "taxes": {
+    "label": "Taxes",
+    "params": {
+      "cit_rate": {
+        "label": "Corporate Income Tax Rate",
+        "description": "Statutory corporate income tax rate. 0.21 = 21% corporate tax rate.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "tau_c": {
+        "label": "Consumption Tax Rate (VAT)",
+        "description": "Consumption tax / VAT rate applied to all consumption. 0 = no consumption tax.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "tau_payroll": {
+        "label": "Payroll Tax Rate",
+        "description": "Tax rate on labor income for payroll/social security. 0 = no payroll tax.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "tau_bq": {
+        "label": "Bequest/Estate Tax Rate",
+        "description": "Tax rate on bequests (inheritances). 0 = no estate tax.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "h_wealth": {
+        "label": "Wealth Tax Rate",
+        "description": "Rate parameter for the wealth tax function. Higher values = higher effective wealth tax.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "m_wealth": {
+        "label": "Wealth Tax Midpoint",
+        "description": "Midpoint parameter for the wealth tax function. Determines the wealth level at which the tax is half its maximum rate.",
+        "type": "float",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      "p_wealth": {
+        "label": "Wealth Tax Scale",
+        "description": "Scale parameter for the wealth tax function. Controls how quickly the tax rate rises with wealth.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      }
+    }
+  },
+  "open_economy": {
+    "label": "Open Economy",
+    "params": {
+      "world_int_rate_annual": {
+        "label": "World Interest Rate",
+        "description": "Annual world interest rate for the small open economy. 0.04 = 4% annual rate.",
+        "type": "float",
+        "min": 0,
+        "max": 0.2,
+        "step": 0.005
+      },
+      "initial_foreign_debt_ratio": {
+        "label": "Initial Foreign Debt / GDP",
+        "description": "Initial ratio of foreign-held debt to GDP. 0 = no foreign debt initially.",
+        "type": "float",
+        "min": 0,
+        "max": 2,
+        "step": 0.01
+      },
+      "zeta_D": {
+        "label": "Domestic Debt Share",
+        "description": "Share of new government debt held by domestic investors. 0.4 = 40% held domestically.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      "zeta_K": {
+        "label": "Domestic Capital Share",
+        "description": "Share of new capital held by domestic investors. 0.2 = 20% of capital is domestically owned.",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      }
+    }
+  },
+  "ubi": {
+    "label": "UBI",
+    "params": {
+      "ubi_nom_017": {
+        "label": "UBI Ages 0–17",
+        "description": "Annual nominal UBI payment for ages 0 to 17. 0 = no UBI for this age group.",
+        "type": "float",
+        "min": 0,
+        "max": 50000,
+        "step": 100
+      },
+      "ubi_nom_1864": {
+        "label": "UBI Ages 18–64",
+        "description": "Annual nominal UBI payment for ages 18 to 64. 0 = no UBI for this age group.",
+        "type": "float",
+        "min": 0,
+        "max": 50000,
+        "step": 100
+      },
+      "ubi_nom_65p": {
+        "label": "UBI Ages 65+",
+        "description": "Annual nominal UBI payment for ages 65 and older. 0 = no UBI for this age group.",
+        "type": "float",
+        "min": 0,
+        "max": 50000,
+        "step": 100
+      },
+      "ubi_nom_max": {
+        "label": "Max UBI per Household",
+        "description": "Maximum total UBI payment per household. 0 = no cap on household UBI.",
+        "type": "float",
+        "min": 0,
+        "max": 100000,
+        "step": 100
+      }
+    }
+  }
+}
