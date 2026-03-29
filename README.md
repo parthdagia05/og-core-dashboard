@@ -4,7 +4,7 @@ A proof-of-concept interactive dashboard for exploring OG-Core macroeconomic mod
 
 Built as a demonstration project for **GSoC 2026 — OG-CLEWS integration in [MUIOGO](https://github.com/EAPD-DRB/MUIOGO)**.
 
-> **Live Demo**: [og-core-dashboard.onrender.com](https://og-core-dashboard.onrender.com)
+> **Live Demo**: [og-core-dashboard.vercel.app](https://og-core-dashboard.vercel.app)
 
 ## What This Does
 
@@ -28,7 +28,7 @@ Built as a demonstration project for **GSoC 2026 — OG-CLEWS integration in [MU
 | Frontend | HTML + Bootstrap 5 + jQuery |
 | Charts | Plotly.js |
 | Data | JSON fixtures (no database) |
-| Deployment | Render |
+| Deployment | Vercel |
 
 Deliberately matches **MUIOGO's stack** (jQuery + Bootstrap + Plotly) rather than using React/D3.
 
