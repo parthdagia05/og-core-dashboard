@@ -12,13 +12,16 @@ import os
 
 from flask import Flask, jsonify, render_template, request, Response
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__,
+            template_folder=os.path.join(BASE_DIR, "templates"),
+            static_folder=os.path.join(BASE_DIR, "static"))
 
 # ---------------------------------------------------------------------------
 # Data loading helpers
 # ---------------------------------------------------------------------------
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+DATA_DIR = os.path.join(BASE_DIR, "data")
 FIXTURES_DIR = os.path.join(DATA_DIR, "fixtures")
 
 
@@ -27,12 +30,12 @@ def load_json(filepath):
         return json.load(f)
 
 
-DEFAULT_PARAMS = load_json(os.path.join(DATA_DIR, "default_parameters.json"))
-PARAM_METADATA = load_json(os.path.join(DATA_DIR, "parameter_metadata.json"))
-
-
 def load_fixture(name):
     return load_json(os.path.join(FIXTURES_DIR, f"{name}.json"))
+
+
+DEFAULT_PARAMS = load_json(os.path.join(DATA_DIR, "default_parameters.json"))
+PARAM_METADATA = load_json(os.path.join(DATA_DIR, "parameter_metadata.json"))
 
 
 # ---------------------------------------------------------------------------
